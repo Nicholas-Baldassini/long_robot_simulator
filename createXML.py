@@ -1,12 +1,12 @@
 import xml.etree.ElementTree as ET
 
-def create_MJCF(num, len):
+def create_MJCF(num, len, extra=None, destination='./MJCFS/new_cont.xml'):
     # Config params
-    filename = "./new_cont.xml"
+    filename = destination
     joints_num = num
     thickness = 0.035
     length = len
-    joint_range = "-20.5 20.5"
+    joint_range = "-40.5 40.5"
 
     # Root/subroot elements
     mujoco = ET.Element('mujoco')
@@ -36,9 +36,19 @@ def create_MJCF(num, len):
     surface = ET.SubElement(worldbody, "geom", attrib={"type": "plane", "size": "100 100 0.1", "rgba": "0.46 0.86 1 1"})
     # ----------------------------
 
+
+    # Add obstacles
+    if extra:
+       # print(extra, type(extra))
+        assert type(extra) is list
+        for i in extra:
+            worldbody.insert(2, i)
+
+
+
     # Add base sphere and first link
-    base_sphere = ET.SubElement(worldbody, "body", attrib={"name": "base", "pos": "0 0 0.5"})
-    ET.SubElement(base_sphere, "joint", attrib={"type": "free", "damping": "0.9", "stiffness": "1.2"})
+    base_sphere = ET.SubElement(worldbody, "body", attrib={"name": "base", "pos": "0 0 0.04"})
+    #ET.SubElement(base_sphere, "joint", attrib={"type": "free", "damping": "0.9", "stiffness": "1.2"})
     ET.SubElement(base_sphere, "geom", attrib={"size": "0.05", "type": "sphere"})
     # ----------------------------
 
@@ -57,14 +67,14 @@ def create_MJCF(num, len):
         joint_names.append(j_name)
         curr_tip = ET.SubElement(curr_tip, "body", attrib={"name": f"link_{i}", "pos": f"{length} 0 0"})
         ET.SubElement(curr_tip, "geom", attrib={"class": "geom0", "fromto": f"0 0 0 {length} 0 0", "size": "0.035", "type":"capsule"})
-        ET.SubElement(curr_tip, "joint", attrib={"axis": "0 0 1", "class": "link", "name":j_name, "pos": "0 0 0", "range": joint_range, "type": "hinge"})
+        ET.SubElement(curr_tip, "joint", attrib={"axis": "0 0 1", "class": "link", "name":j_name, "pos": "0 0 0", "range": joint_range, "type": "hinge", "stiffness": "10"})
         i += 1
 
 
     # Add actuators/joint control
     for j in joint_names:
         # Position control
-        ET.SubElement(actuators, "position", attrib={"class": "position", "ctrlrange": "-1 1", "joint": j, "kp": "100", "name": f"act_{j}"})
+        ET.SubElement(actuators, "motor", attrib={"class": "position", "ctrlrange": joint_range, "joint": j, "name": f"act_{j}"})
 
     space_comment = ET.Comment('\n\t\t')
     mujoco.insert(1, ET.Comment(' === Physical robot definitions === '))
@@ -74,3 +84,21 @@ def create_MJCF(num, len):
     tree = ET.ElementTree(mujoco)
     ET.indent(tree, space="    ", level=0)
     tree.write(filename)
+    
+    # fix base, add obstacles
+    # 
+    
+    
+def create_obstacles(filename, num, pos=None):
+    
+    if num:
+        assert len(pos) == num
+    
+    bodies = []
+    for i in range(num):
+        body = ET.Element("body", attrib={"name": f"obstacle_{i}", "pos": f"{pos[i][0]} {pos[i][1]} {pos[i][2]}"})
+        #ET.SubElement(body, "joint", attrib={"name": f"obstacle_{i}_joint", "type": "free", "damping": "0.001"})
+        ET.SubElement(body, "geom", attrib={"name": f"obstacle_{i}_geom", "size": "0.08", "rgba": "0.98 0.75 1 1", "fromto": "0 0 0 0 0 0.2", "type": "capsule"})
+        bodies.append(body)
+        
+    return bodies

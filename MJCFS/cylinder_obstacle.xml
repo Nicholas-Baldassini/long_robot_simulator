@@ -1,0 +1,19 @@
+<mujoco>
+
+
+
+    <worldbody>
+
+
+
+        <body name="obstacle" pos="0 0 1">
+        <joint name="ball\_joint" type="free" damping="0.001"/>
+        <geom name="ball\_geom" size="0.1" type="sphere" density="100"/>
+        </body>
+
+
+
+        
+    </worldbody>
+
+</mujoco>
