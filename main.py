@@ -2,13 +2,15 @@ import time
 import mujoco
 import mujoco.viewer
 import numpy as np
-from createXML import create_MJCF, create_obstacles
+from utils.createXML import create_MJCF, create_obstacles, generate_from_file
 
 
 # Rough estimate of length 30 * 0.03
 
-obstacles = create_obstacles('./MJCFS/cylinder_obstacle.xml', 3, pos=[(0.5, -0.15, 0), (0.5, 0.15, 0), (1.1, 0.15, 0)   ])
-create_MJCF(30, 0.07, extra=obstacles, destination='./MJCFS/new_cont.xml')
+custom_obstacles = generate_from_file("./utils/taskspace.conf")
+
+obstacles = create_obstacles('./MJCFS/cylinder_obstacle.xml', 3, pos=[(0.5, -0.15, 0), (0.5, 0.15, 0), (1.1, 0.15, 0)])
+create_MJCF(30, 0.07, extra=custom_obstacles, destination='./MJCFS/new_cont.xml')
 m = mujoco.MjModel.from_xml_path('./MJCFS/new_cont.xml')
 #m = mujoco.MjModel.from_xml_path('test.xml')
 #m = mujoco.MjModel.from_xml_path('./MJCFS/cylinder_obstacle.xml')

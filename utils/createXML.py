@@ -32,7 +32,7 @@ def create_MJCF(num, len, extra=None, destination='./MJCFS/new_cont.xml'):
     # ----------------------------
 
     # Main world body
-    light = ET.SubElement(worldbody, "light", attrib={"diffuse": ".5 .5 .5", "pos": "0 0 3", "dir": "0 0 -1"})
+    light = ET.SubElement(worldbody, "light", attrib={"diffuse": "1.0 1.0 1.0", "pos": "0 0 10", "dir": "0 0 -1"})
     surface = ET.SubElement(worldbody, "geom", attrib={"type": "plane", "size": "100 100 0.1", "rgba": "0.46 0.86 1 1"})
     # ----------------------------
 
@@ -101,4 +101,25 @@ def create_obstacles(filename, num, pos=None):
         ET.SubElement(body, "geom", attrib={"name": f"obstacle_{i}_geom", "size": "0.08", "rgba": "0.98 0.75 1 1", "fromto": "0 0 0 0 0 0.2", "type": "capsule"})
         bodies.append(body)
         
+    return bodies
+
+
+def generate_from_file(filename):
+    
+    bodies = []
+    with open(filename) as f:
+        for ind, i in enumerate(f.readlines()):
+            i = i.split(" ")
+            shape, radius, y, x, static = i[0], i[1], i[2], i[3], i[4][:-1]
+            height = 0
+            
+            if static == "False":
+                body = ET.Element("body", attrib={"name": f"obstacle_custom_{ind}", "pos": f"{x} {y} {2}"})
+                ET.SubElement(body, "joint", attrib={"name": f"obstacle_custom_{ind}_joint", "type": "free", "damping": "0.001"})
+                ET.SubElement(body, "geom", attrib={"name": f"obstacle_custom_{ind}_geom", "size": f"{radius}", "rgba": "0 0 0 1", "fromto": "0 0 0 0 0 0.01", "type": "capsule"})
+            else:
+                body = ET.Element("body", attrib={"name": f"obstacle_custom_{ind}", "pos": f"{x} {y} {height}"})
+                #ET.SubElement(body, "joint", attrib={"name": f"obstacle_custom_{ind}_joint", "type": "free", "damping": "0.001"})
+                ET.SubElement(body, "geom", attrib={"name": f"obstacle_custom_{ind}_geom", "size": f"{radius}", "rgba": "0.98 0.75 1 1", "fromto": "0 0 0 0 0 0.2", "type": "capsule"})
+            bodies.append(body)
     return bodies
