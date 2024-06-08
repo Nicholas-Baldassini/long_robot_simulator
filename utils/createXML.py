@@ -53,6 +53,7 @@ def create_MJCF(num, len, extra=None, destination='./MJCFS/new_cont.xml'):
     # ----------------------------
 
     # Add links and joints
+    colours = ["0.4 0.1 1 1", "0.1 0 1 1"]
     joint_names = []
     base_joint_name = "base_joint"
     joint_names.append(base_joint_name)
@@ -66,7 +67,7 @@ def create_MJCF(num, len, extra=None, destination='./MJCFS/new_cont.xml'):
         j_name = f"joint_{i}"
         joint_names.append(j_name)
         curr_tip = ET.SubElement(curr_tip, "body", attrib={"name": f"link_{i}", "pos": f"{length} 0 0"})
-        ET.SubElement(curr_tip, "geom", attrib={"class": "geom0", "fromto": f"0 0 0 {length} 0 0", "size": "0.035", "type":"capsule"})
+        ET.SubElement(curr_tip, "geom", attrib={ "fromto": f"0 0 0 {length} 0 0", "size": "0.035", "type":"capsule", "rgba": f"{colours[i % 2]}"})
         ET.SubElement(curr_tip, "joint", attrib={"axis": "0 0 1", "class": "link", "name":j_name, "pos": "0 0 0", "range": joint_range, "type": "hinge", "stiffness": "10"})
         i += 1
 
