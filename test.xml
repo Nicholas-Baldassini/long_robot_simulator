@@ -19,10 +19,11 @@
 		-->
     <body name="base" pos="0 0 0.04">
             <geom size="0.05" type="sphere" />
+               
+                <joint axis="1 0 0" name="base_joint_10" pos="0 0 0" range="-40.5 40.5" type="slide" />
             <body name="base_link" pos="0.05 0 0">
                 <geom class="geom0" fromto="0 0 0 0.5 0 0" size="0.035" type="capsule" />
                 <joint axis="0 0 1" class="link" name="base_joint" pos="0 0 0" range="-40.5 40.5" type="hinge" />
-                <joint axis="1 0 0" name="base_joint_1" pos="0 0 0" range="-40.5 40.5" type="slide" />
                 <body name="link_0" pos="0.5 0 0">
                     <geom fromto="0 0 0 0.5 0 0" size="0.035" type="capsule" rgba="0.4 0.1 1 1" />
                     <joint axis="0 0 1" class="link" name="joint_0" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
@@ -42,7 +43,7 @@
 		-->
     <actuator>
         <motor class="position" ctrlrange="-40.5 40.5" joint="base_joint" name="act_base_joint" />
-        <position ctrlrange="-40.5 40.5" joint="base_joint_1" name="slide" />
+        <position ctrlrange="-40.5 40.5" joint="base_joint_10" name="slid1e" />
         <motor class="position" ctrlrange="-40.5 40.5" joint="joint_0" name="act_joint_0" />
         <motor class="position" ctrlrange="-40.5 40.5" joint="joint_1" name="act_joint_1" />
         <motor class="position" ctrlrange="-40.5 40.5" joint="joint_2" name="act_joint_2" />

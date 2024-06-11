@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
 
-def create_MJCF(num, len, extra=None, destination='./MJCFS/new_cont.xml'):
+def create_MJCF(num, len, extra=None, movement=False, destination='./MJCFS/new_cont.xml'):
     # Config params
     filename = destination
     joints_num = num
@@ -13,27 +13,30 @@ def create_MJCF(num, len, extra=None, destination='./MJCFS/new_cont.xml'):
     default = ET.SubElement(mujoco, "default")
     worldbody = ET.SubElement(mujoco, "worldbody")
     actuators = ET.SubElement(mujoco, "actuator")
+    asset = ET.SubElement(mujoco, "asset")
     # ----------------------------
 
     # Default stuff and classes
     position_class = ET.SubElement(default, "default", attrib={'class': 'position'})
-    pos = ET.SubElement(position_class, "position",  attrib={'ctrllimited':'true','forcelimited':'false' })
+    ET.SubElement(position_class, "position",  attrib={'ctrllimited':'true','forcelimited':'false' })
 
-    geom_attribs = {'conaffinity':'0','contype':'1', "friction": "1 0.005 0.001", "margin": "0.001", "rgba": "0.75 0.6 0.5 1", "solimp": "0.95 0.95 0.01", "solref": "0.008 1"}
+    geom_attribs = {'conaffinity':'0','contype':'1', "friction": "0 0.0 0.0", "margin": "0.001", "rgba": "0.75 0.6 0.5 1", "solimp": "0.95 0.95 0.01", "solref": "0.008 1"}
     geom0_class = ET.SubElement(default, "default", attrib={'class': 'geom0'})
-    geom0 = ET.SubElement(geom0_class, "geom",  attrib=geom_attribs)
+    ET.SubElement(geom0_class, "geom",  attrib=geom_attribs)
 
     link_class = ET.SubElement(default, "default", attrib={'class': 'link'})
-    link = ET.SubElement(link_class, "joint",  attrib= {'armature':'0.1','damping':'5', "limited": "true", "stiffness": "0"})
+    ET.SubElement(link_class, "joint",  attrib= {'armature':'0.1','damping':'5', "limited": "true", "stiffness": "0"})
     # ----------------------------
 
     # Lower gravity
-    gravity = ET.SubElement(mujoco, "option", attrib={"gravity": "0 0 -1.8"})
+    ET.SubElement(mujoco, "option", attrib={"gravity": "0 0 -1.8"})
     # ----------------------------
 
     # Main world body
-    light = ET.SubElement(worldbody, "light", attrib={"diffuse": "1.0 1.0 1.0", "pos": "0 0 10", "dir": "0 0 -1"})
-    surface = ET.SubElement(worldbody, "geom", attrib={"type": "plane", "size": "100 100 0.1", "rgba": "0.46 0.86 1 1"})
+    ET.SubElement(asset, "texture", attrib={"name": "grid", "type": "2d", "builtin": "checker", "width": "512", "height": "512", "rgb1": ".1 .2 .3", "rgb2": ".2 .3 .4"})
+    ET.SubElement(asset, "material", attrib={"name": "grid", "texture": "grid", "texrepeat": "1 1", "texuniform": "true", "reflectance": ".2"})
+    ET.SubElement(worldbody, "light", attrib={"pos": "0 0 10", "dir": "0 0 -1", "castshadow": "false"})
+    ET.SubElement(worldbody, "geom", attrib={"type": "plane", "size": "100 100 0.1", "material": "grid"})
     # ----------------------------
 
 
@@ -47,9 +50,12 @@ def create_MJCF(num, len, extra=None, destination='./MJCFS/new_cont.xml'):
 
 
     # Add base sphere and first link
-    base_sphere = ET.SubElement(worldbody, "body", attrib={"name": "base", "pos": "0 0 0.04"})
+    base_sphere = ET.SubElement(worldbody, "body", attrib={"name": "base", "pos": "0 0 0.05"})
     #ET.SubElement(base_sphere, "joint", attrib={"type": "free", "damping": "0.9", "stiffness": "1.2"})
     ET.SubElement(base_sphere, "geom", attrib={"size": "0.05", "type": "sphere"})
+    if movement:
+        ET.SubElement(base_sphere, "joint", attrib={"axis": "1 0 0", "name": "sphere_position", "pos": "0 0 0", "range": "-2 2", "type": "slide"})
+        ET.SubElement(actuators, "velocity", attrib={"ctrlrange": "-2 2", "joint": "sphere_position", "name": f"sphere_position"})
     # ----------------------------
 
     # Add links and joints
