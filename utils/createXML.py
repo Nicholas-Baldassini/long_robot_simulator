@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
 
-def create_MJCF(num, len, extra=None, movement=False, destination='./MJCFS/new_cont.xml'):
+def create_MJCF(num, len, extra=None, movement=False, destination='./MJCFS/new_cont.xml', colour_scheme=True):
     # Config params
     filename = destination
     joints_num = num
@@ -33,10 +33,15 @@ def create_MJCF(num, len, extra=None, movement=False, destination='./MJCFS/new_c
     # ----------------------------
 
     # Main world body
-    ET.SubElement(asset, "texture", attrib={"name": "grid", "type": "2d", "builtin": "checker", "width": "512", "height": "512", "rgb1": ".1 .2 .3", "rgb2": ".2 .3 .4"})
-    ET.SubElement(asset, "material", attrib={"name": "grid", "texture": "grid", "texrepeat": "1 1", "texuniform": "true", "reflectance": ".2"})
+    plane_attrib = {"type": "plane", "size": "100 100 0.1"}
+    if colour_scheme == "Fun":
+        ET.SubElement(asset, "texture", attrib={"name": "grid", "type": "2d", "builtin": "checker", "width": "512", "height": "512", "rgb1": ".1 .2 .3", "rgb2": ".2 .3 .4"})
+        ET.SubElement(asset, "material", attrib={"name": "grid", "texture": "grid", "texrepeat": "1 1", "texuniform": "true", "reflectance": ".2"})
+        plane_attrib["material"] = "grid"
+    else:
+        plane_attrib["rgba"] = "0.984 0.984 0.984 1"
     ET.SubElement(worldbody, "light", attrib={"pos": "0 0 10", "dir": "0 0 -1", "castshadow": "false"})
-    ET.SubElement(worldbody, "geom", attrib={"type": "plane", "size": "100 100 0.1", "material": "grid"})
+    ET.SubElement(worldbody, "geom", attrib=plane_attrib) #"material" : "plane"
     # ----------------------------
 
 
@@ -54,12 +59,14 @@ def create_MJCF(num, len, extra=None, movement=False, destination='./MJCFS/new_c
     #ET.SubElement(base_sphere, "joint", attrib={"type": "free", "damping": "0.9", "stiffness": "1.2"})
     ET.SubElement(base_sphere, "geom", attrib={"size": "0.05", "type": "sphere"})
     if movement:
-        ET.SubElement(base_sphere, "joint", attrib={"axis": "1 0 0", "name": "sphere_position", "pos": "0 0 0", "range": "-2 2", "type": "slide"})
-        ET.SubElement(actuators, "velocity", attrib={"ctrlrange": "-2 2", "joint": "sphere_position", "name": f"sphere_position"})
+        ET.SubElement(base_sphere, "joint", attrib={"axis": "1 0 0", "name": "sphere_velocity", "pos": "0 0 0", "range": "-2 2", "type": "slide"})
+        ET.SubElement(actuators, "velocity", attrib={"ctrlrange": "-2 2", "joint": "sphere_velocity", "name": f"sphere_velocity_act"})
     # ----------------------------
 
     # Add links and joints
-    colours = ["0.4 0.1 1 1", "0.1 0 1 1"]
+    colours = ["0.274 0.274 0.274 1", "0.196 0.196 0.196 1"]
+    if colour_scheme == "Fun":
+        colours = ["0.552 0.549 0.960 0.8", "0.01 0.517 1 0.9"]
     joint_names = []
     base_joint_name = "base_joint"
     joint_names.append(base_joint_name)
@@ -111,7 +118,7 @@ def create_obstacles(filename, num, pos=None):
     return bodies
 
 
-def generate_from_file(filename):
+def generate_from_file(filename, colour_scheme=None):
     
     bodies = []
     with open(filename) as f:
@@ -119,14 +126,27 @@ def generate_from_file(filename):
             i = i.split(" ")
             shape, radius, y, x, static = i[0], i[1], i[2], i[3], i[4][:-1]
             height = 0
+            s_colour = "0.411 0.580 0.815 1"
+            f_colour = "0.501 0.733 0.568 1"
+            if colour_scheme == "Fun":
+                s_colour = "0 0.5 1 1"
+                f_colour = "0 0 0 1"
             
             if static == "False":
+                
+                
                 body = ET.Element("body", attrib={"name": f"obstacle_custom_{ind}", "pos": f"{x} {y} {2}"})
                 ET.SubElement(body, "joint", attrib={"name": f"obstacle_custom_{ind}_joint", "type": "free", "damping": "0.001"})
-                ET.SubElement(body, "geom", attrib={"name": f"obstacle_custom_{ind}_geom", "size": f"{radius}", "rgba": "0 0 0 1", "fromto": "0 0 0 0 0 0.01", "type": "capsule"})
+                ET.SubElement(body, "geom", attrib={"name": f"obstacle_custom_{ind}_geom", "size": f"{radius}", "rgba": f_colour, "fromto": "0 0 0 0 0 0.01", "type": "capsule"})
             else:
                 body = ET.Element("body", attrib={"name": f"obstacle_custom_{ind}", "pos": f"{x} {y} {height}"})
                 #ET.SubElement(body, "joint", attrib={"name": f"obstacle_custom_{ind}_joint", "type": "free", "damping": "0.001"})
-                ET.SubElement(body, "geom", attrib={"name": f"obstacle_custom_{ind}_geom", "size": f"{radius}", "rgba": "0.98 0.75 1 1", "fromto": "0 0 0 0 0 0.2", "type": "capsule"})
+                ET.SubElement(body, "geom", attrib={"name": f"obstacle_custom_{ind}_geom", "size": f"{radius}", "rgba": s_colour, "fromto": "0 0 0 0 0 0.2", "type": "cylinder"})
             bodies.append(body)
     return bodies
+
+
+
+
+
+
