@@ -6,6 +6,7 @@ Currently this has only been tested on linux but should work on all platforms. I
 
 1. Clone this repo
 2. Install python
+
     2. On linux you must install tkinter seperately ```sudo apt-get install python3-tk```
 3. Optional: create a virtualenv
 ```
