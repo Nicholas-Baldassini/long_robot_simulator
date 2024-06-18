@@ -22,7 +22,7 @@ To run the simulation,
 ```python main.py```
 
 #### Actuation
-Right now the robot controls are quite simple. The robot starts off without any actuation and you can click ```spacebar``` to start actuation. Click it again will change the direction. 
+Right now the robot controls are quite simple. The robot starts off without any actuation and you can press ```spacebar``` on your keyboard to start actuation. Press it again will change the direction. 
 
 #### Movement
 In main.py there is a boolean ```enable_movement = True```, if False the base of the robot will be locked in place. If True, you can move the robot in the y direction with the arrow keys and your velocity will be printed in the console. The movement currently is a little finicky and we are working on fixing it.
