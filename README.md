@@ -1,3 +1,6 @@
+# New commit
+The documentation listed here is for the second last commit. To use this one, do ```python start.py```
+
 # long_robot_simulator
 Welcome to the long robot simulator repo. In this repo you will find a continuum framework built on top of the simulation engine Mujoco.
 

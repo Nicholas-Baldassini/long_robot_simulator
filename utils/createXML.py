@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
 
-def create_MJCF(num, len, extra=None, movement=False, destination='./MJCFS/new_cont.xml', colour_scheme=True):
+def create_MJCF(num, len, extra=None, movement=False, destination='./MJCFS/new_cont.xml', colour_scheme=True, gravity=True):
     # Config params
     filename = destination
     joints_num = num
@@ -29,12 +29,13 @@ def create_MJCF(num, len, extra=None, movement=False, destination='./MJCFS/new_c
     # ----------------------------
 
     # Lower gravity
-    ET.SubElement(mujoco, "option", attrib={"gravity": "0 0 -1.8"})
+    if gravity:
+        ET.SubElement(mujoco, "option", attrib={"gravity": "0 0 -1.8"})
     # ----------------------------
 
     # Main world body
     plane_attrib = {"type": "plane", "size": "100 100 0.1"}
-    if colour_scheme == "Fun":
+    if colour_scheme == "Cinematic":
         ET.SubElement(asset, "texture", attrib={"name": "grid", "type": "2d", "builtin": "checker", "width": "512", "height": "512", "rgb1": ".1 .2 .3", "rgb2": ".2 .3 .4"})
         ET.SubElement(asset, "material", attrib={"name": "grid", "texture": "grid", "texrepeat": "1 1", "texuniform": "true", "reflectance": ".2"})
         plane_attrib["material"] = "grid"
@@ -55,17 +56,20 @@ def create_MJCF(num, len, extra=None, movement=False, destination='./MJCFS/new_c
 
 
     # Add base sphere and first link
-    base_sphere = ET.SubElement(worldbody, "body", attrib={"name": "base", "pos": "0 0 0.05"})
+    pos_approx = joints_num * len 
+    #print(position_approx)
+    base_sphere = ET.SubElement(worldbody, "body", attrib={"name": "base", "pos": f"-{pos_approx} 0 0.05"})
     #ET.SubElement(base_sphere, "joint", attrib={"type": "free", "damping": "0.9", "stiffness": "1.2"})
     ET.SubElement(base_sphere, "geom", attrib={"size": "0.05", "type": "sphere"})
     if movement:
-        ET.SubElement(base_sphere, "joint", attrib={"axis": "1 0 0", "name": "sphere_velocity", "pos": "0 0 0", "range": "-2 2", "type": "slide"})
-        ET.SubElement(actuators, "velocity", attrib={"ctrlrange": "-2 2", "joint": "sphere_velocity", "name": f"sphere_velocity_act"})
+        ET.SubElement(base_sphere, "joint", attrib={"axis": "1 0 0", "name": "sphere_velocity", "pos": "0 0 0", "range": "-200 200", "type": "slide"})
+        ET.SubElement(actuators, "velocity", attrib={"ctrlrange": "-4 4", "joint": "sphere_velocity", "name": f"sphere_velocity_act"})
+        #ET.SubElement(base_sphere, "inertial", attrib={"pos": "0 0 10", "mass": "1000000"})
     # ----------------------------
 
     # Add links and joints
     colours = ["0.274 0.274 0.274 1", "0.196 0.196 0.196 1"]
-    if colour_scheme == "Fun":
+    if colour_scheme == "Cinematic":
         colours = ["0.552 0.549 0.960 0.8", "0.01 0.517 1 0.9"]
     joint_names = []
     base_joint_name = "base_joint"
@@ -73,6 +77,7 @@ def create_MJCF(num, len, extra=None, movement=False, destination='./MJCFS/new_c
     base_link = ET.SubElement(base_sphere, "body", attrib={"name": "base_link", "pos": "0.05 0 0"})
     ET.SubElement(base_link, "geom", attrib={"class": "geom0", "fromto": f"0 0 0 {length} 0 0", "size": f"{thickness}", "type": "capsule"})
     ET.SubElement(base_link, "joint", attrib={"axis": "0 0 1", "class": "link", "name": base_joint_name, "pos": "0 0 0", "range": joint_range, "type": "hinge"})
+    #ET.SubElement(base_link, "inertial", attrib={"pos": "0 0 10", "mass": "1"})
 
     curr_tip = base_link
     i = 0
@@ -82,6 +87,7 @@ def create_MJCF(num, len, extra=None, movement=False, destination='./MJCFS/new_c
         curr_tip = ET.SubElement(curr_tip, "body", attrib={"name": f"link_{i}", "pos": f"{length} 0 0"})
         ET.SubElement(curr_tip, "geom", attrib={ "fromto": f"0 0 0 {length} 0 0", "size": "0.035", "type":"capsule", "rgba": f"{colours[i % 2]}"})
         ET.SubElement(curr_tip, "joint", attrib={"axis": "0 0 1", "class": "link", "name":j_name, "pos": "0 0 0", "range": joint_range, "type": "hinge", "stiffness": "10"})
+        #ET.SubElement(curr_tip, "inertial", attrib={"pos": "0 0 10", "mass": "1"})
         i += 1
 
 
@@ -128,7 +134,8 @@ def generate_from_file(filename, colour_scheme=None):
             height = 0
             s_colour = "0.411 0.580 0.815 1"
             f_colour = "0.501 0.733 0.568 1"
-            if colour_scheme == "Fun":
+            if colour_scheme == "Cinematic":
+                
                 s_colour = "0 0.5 1 1"
                 f_colour = "0 0 0 1"
             

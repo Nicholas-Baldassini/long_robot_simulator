@@ -1,0 +1,10 @@
+{
+    "robot_lock": true,
+    "num_joints": 31,
+    "joint_spacing": 0.05,
+    "gravity": true,
+    "disable_obstacles": false,
+    "colour_scheme": "Clean",
+    "runtime_speed": 1,
+    "show_muj_UI": false
+}
