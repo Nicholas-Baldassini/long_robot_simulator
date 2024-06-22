@@ -27,15 +27,103 @@ class MainWindow(QMainWindow):
                          "disable_obstacles": False, "colour_scheme": "Clean", "runtime_speed": 1, "show_muj_UI": False,
                          "enable_PID": True}
         
+        self.exportDict = {"dest_file": "./exportData/joint_data.csv", "start_time": 1, "end_time": 60, "save_type": "joint angles"}
+        
         # ADD torque, position, velocity control. Do this actuatorgroupdisable element in mujoco
         self.confFile = "utils/simulationConf.json"
 
         self.setWindowTitle("Long Robot Configuration")
-        container = QWidget()
+        dashboard_widget = QWidget()
+        export_widget = QWidget()
+        
         
         self.title_font = PyQt5.QtGui.QFont()
         self.title_font.setBold(True)
         
+        
+        self.tabs = QTabWidget()
+       # self.tabs.setTabsClosable(True)
+        self.tabs.addTab(dashboard_widget, "Dashboard")
+        self.tabs.addTab(export_widget, "Export")
+        self.setCentralWidget(self.tabs)
+        
+        self.setup_dashboard(dashboard_widget)
+        self.setup_export(export_widget)
+        
+        
+        
+
+    def setup_export(self, export):
+        main_layout = QVBoxLayout()
+        top_bar = QHBoxLayout()
+        export_title = QLabel("Export Data ")
+        export_title.setFont(self.title_font)
+        top_bar.addWidget(export_title)
+        main_layout.addLayout(top_bar)
+        
+        main_section = QHBoxLayout()
+        settings_section = QVBoxLayout()
+        
+        # Save Type
+        save_type_box = QHBoxLayout()
+        save_type_box.addWidget(QLabel("What do you want to export?"))
+        save_type = QComboBox()
+        save_type.addItems(["joint angles", "joint torques", "joint positions (x y z)"])
+        save_type.currentTextChanged.connect(self.change_save_type)
+        save_type_box.addWidget(save_type)
+        settings_section.addLayout(save_type_box)
+        
+        # Start time
+        start_time_box = QHBoxLayout()
+        start_time_box.addWidget(QLabel("Start time (seconds): "))
+        start_time = QSpinBox()
+        start_time.setMinimum(0)
+        start_time.setValue(int(self.exportDict["start_time"]))
+        start_time.setMaximum(10000000)
+        start_time.valueChanged.connect(self.change_start_time)
+        start_time_box.addWidget(start_time)
+        settings_section.addLayout(start_time_box)
+        
+        # End time
+        end_time_box = QHBoxLayout()
+        end_time_box.addWidget(QLabel("End time (seconds): "))
+        end_time = QSpinBox()
+        end_time.setMinimum(1)
+        end_time.setMaximum(10000000)
+        end_time.setValue(int(self.exportDict["end_time"]))
+        end_time.valueChanged.connect(self.change_end_time)
+        end_time_box.addWidget(end_time)
+        settings_section.addLayout(end_time_box)
+         
+    
+        # File edit
+        file_dest_box = QHBoxLayout()
+        file_dest_box.addWidget(QLabel("Save to: "))
+        file_dest = QLineEdit(self.exportDict["dest_file"])
+        file_dest.textEdited.connect(self.change_export_path)
+        file_dest_box.addWidget(file_dest)
+        settings_section.addLayout(file_dest_box)
+        
+        main_section.addLayout(settings_section)
+        main_layout.addLayout(main_section)
+        
+        export.setLayout(main_layout)
+     
+    def change_export_path(self, filename):
+        self.exportDict["dest_file"] = filename 
+        print(self.exportDict)
+     
+    def change_save_type(self, save_type):
+        self.exportDict["save_type"] = save_type
+        print(self.exportDict)
+    
+    def change_start_time(self, start):
+        self.exportDict["start_time"] = start
+        
+    def change_end_time(self, end):
+        self.exportDict["end_time"] = end
+       
+    def setup_dashboard(self, dashboard):
         # Top Bar setup
         title = QVBoxLayout()
         top_bar = QHBoxLayout()
@@ -46,7 +134,7 @@ class MainWindow(QMainWindow):
         title.addLayout(top_bar)
         main_layout = QHBoxLayout()
        
-       
+        # Sections
         self.left = QVBoxLayout()
         self.middle = QVBoxLayout()
         self.right = QVBoxLayout()
@@ -60,7 +148,7 @@ class MainWindow(QMainWindow):
         # Right Section
         self.setup_controls()
 
-
+        # Main layout
         main_layout.addLayout(self.left)
         main_layout.addSpacing(50)
         main_layout.addLayout(self.middle)
@@ -69,13 +157,7 @@ class MainWindow(QMainWindow):
 
         title.addSpacing(20)
         title.addLayout(main_layout)
-        container.setLayout(title)
-        
-        #self.table_widget = MyTableWidget(self)
-        #self.setCentralWidget(self.table_widget)
-        self.setCentralWidget(container)
-        
-        
+        dashboard.setLayout(title)
     
     def save_file(self):
         with open(self.confFile, "w") as f:
@@ -252,27 +334,28 @@ class MyTableWidget(QWidget):
     
     def __init__(self, parent):
         super(QWidget, self).__init__(parent)
-        self.layout = QVBoxLayout(self)
+        self.layout = QVBoxLayout()
         
         # Initialize tab screen
         self.tabs = QTabWidget()
         self.tab1 = QWidget()
         self.tab2 = QWidget()
-        self.tabs.resize(300,200)
+        #self.tabs.resize(300,200)
         
         # Add tabs
-        self.tabs.addTab(self.tab1,"Tab 1")
-        self.tabs.addTab(self.tab2,"Tab 2")
+        self.tabs.addTab(self.tab1,"Dashboard")
+        self.tabs.addTab(self.tab2,"Export/Save Data")
         
         # Create first tab
-        self.tab1.layout = QVBoxLayout(self)
-        self.pushButton1 = QPushButton("PyQt5 button")
-        self.tab1.layout.addWidget(self.pushButton1)
-        self.tab1.setLayout(self.tab1.layout)
+        #self.tab1.layout = QVBoxLayout(self)
+        # self.pushButton1 = QPushButton("PyQt5 button")
+        # self.tab1.layout.addWidget(self.pushButton1)
+        # self.tab1.setLayout(self.tab1.layout)
         
         # Add tabs to widget
         self.layout.addWidget(self.tabs)
         self.setLayout(self.layout)
+        
     from PyQt5.QtCore import pyqtSlot
     @pyqtSlot()
     def on_click(self):
