@@ -24,7 +24,8 @@ class MainWindow(QMainWindow):
         super().__init__()
 
         self.confDict = {"robot_lock": True, "num_joints": 30, "joint_spacing": 0.05, "gravity": True, 
-                         "disable_obstacles": False, "colour_scheme": "Clean", "runtime_speed": 1, "show_muj_UI": False}
+                         "disable_obstacles": False, "colour_scheme": "Clean", "runtime_speed": 1, "show_muj_UI": False,
+                         "enable_PID": True}
         
         # ADD torque, position, velocity control. Do this actuatorgroupdisable element in mujoco
         self.confFile = "utils/simulationConf.json"
@@ -106,8 +107,10 @@ class MainWindow(QMainWindow):
         
     def toggle_muj_ui(self):
         self.confDict["show_muj_UI"] = not self.confDict["show_muj_UI"]
-        
         #self.setup_preview()
+        
+    def toggle_pid_control(self):
+        self.confDict["enable_PID"] = not self.confDict["enable_PID"]
     
     def toggle_obstacles(self):
         self.confDict["disable_obstacles"] = not self.confDict["disable_obstacles"]
@@ -151,6 +154,11 @@ class MainWindow(QMainWindow):
         check = QCheckBox("Lock robot in place")
         check.stateChanged.connect(self.toggle_movement)
         self.left.addWidget(check)
+        
+        # PID controller
+        pid_controller_box = QCheckBox("Disable PID Controller (movement)")
+        pid_controller_box.stateChanged.connect(self.toggle_pid_control)
+        self.left.addWidget(pid_controller_box)
         
         # Joint number
         joints_num_box = QHBoxLayout()

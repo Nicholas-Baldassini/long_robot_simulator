@@ -34,7 +34,7 @@ def create_MJCF(num, len, extra=None, movement=False, destination='./MJCFS/new_c
     # ----------------------------
 
     # Main world body
-    plane_attrib = {"type": "plane", "size": "100 100 0.1"}
+    plane_attrib = {"type": "plane", "size": "100 100 0.1", "friction": "0 0 0"}
     if colour_scheme == "Cinematic":
         ET.SubElement(asset, "texture", attrib={"name": "grid", "type": "2d", "builtin": "checker", "width": "512", "height": "512", "rgb1": ".1 .2 .3", "rgb2": ".2 .3 .4"})
         ET.SubElement(asset, "material", attrib={"name": "grid", "texture": "grid", "texrepeat": "1 1", "texuniform": "true", "reflectance": ".2"})
@@ -85,7 +85,7 @@ def create_MJCF(num, len, extra=None, movement=False, destination='./MJCFS/new_c
         j_name = f"joint_{i}"
         joint_names.append(j_name)
         curr_tip = ET.SubElement(curr_tip, "body", attrib={"name": f"link_{i}", "pos": f"{length} 0 0"})
-        ET.SubElement(curr_tip, "geom", attrib={ "fromto": f"0 0 0 {length} 0 0", "size": "0.035", "type":"capsule", "rgba": f"{colours[i % 2]}"})
+        ET.SubElement(curr_tip, "geom", attrib={ "fromto": f"0 0 0 {length} 0 0", "size": "0.035", "type":"capsule", "rgba": f"{colours[i % 2]}", "friction": "0 0 0"})
         ET.SubElement(curr_tip, "joint", attrib={"axis": "0 0 1", "class": "link", "name":j_name, "pos": "0 0 0", "range": joint_range, "type": "hinge", "stiffness": "10"})
         #ET.SubElement(curr_tip, "inertial", attrib={"pos": "0 0 10", "mass": "1"})
         i += 1

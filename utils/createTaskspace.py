@@ -1,5 +1,8 @@
 import tkinter as tk
 
+
+CURR_SHAPE = "Circle"
+STATIC = True
 def start_taskspace_creator():
     # Robot centering stuff
     muj_robot_center = (0, 0, 0.04)
@@ -10,8 +13,6 @@ def start_taskspace_creator():
     yscale = muj_area_space / width
 
 
-    CURR_SHAPE = "Circle"
-    STATIC = True
     coordinates = []
     def draw_shape(event, rad:tk.Scale):
         x, y = event.x, event.y

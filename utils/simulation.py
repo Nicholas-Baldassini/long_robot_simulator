@@ -9,7 +9,7 @@ import json
 # For movement
 velocity = 0
 # Speed increase
-vel_delta = 0.2
+vel_delta = 0.01
 direction = 0
 
 
@@ -49,9 +49,9 @@ def simulate(conf_file="simulationConf.json"):
   mujoco.mj_resetData(m, d)
 
   # Torque control limit
-  ctrl_limit = 2 
+  ctrl_limit = 3
   # The amount we increase the torque every step, we dont want to instantaneously change it
-  ctrl_interpolation = 0.001 #0.00002
+  ctrl_interpolation = 0.005 #0.00002
 
   # Apply torque flag
   apply_torque = True
@@ -87,6 +87,7 @@ def simulate(conf_file="simulationConf.json"):
   # Change runtime_speed to speed up or slow down simulation
   runtime_speed = 1 # 0.20
   with mujoco.viewer.launch_passive(m, d, key_callback=key_callback, show_left_ui=conf["show_muj_UI"], show_right_ui=conf["show_muj_UI"] ) as viewer:
+    global velocity
     start = time.time()
     
     # Main control loop
@@ -108,6 +109,7 @@ def simulate(conf_file="simulationConf.json"):
       
       # Apply torque to joints
       if apply_torque:
+        
         for idx, actuator in enumerate(d.ctrl): # assumes sphere movement is the first joint, and only slide joint
             # Skip over first joint. 
             # In this model the first joint is prismatic which alows movement of the robot
@@ -118,12 +120,12 @@ def simulate(conf_file="simulationConf.json"):
                 d.ctrl[idx] += ctrl_interpolation * direction
       
       # PID CONTROLLER
-      if enable_movement:
+      if enable_movement and conf["enable_PID"]:
+        proportional_scale = 50
         base_vel = d.qvel[0]
-        diff = abs(base_vel - velocity)
-        #print(diff, base_vel, velocity, )
-        print(m.body_mass[0], m.body_inertia[0, :])
-      #print(d.qvel)
+        error = base_vel - velocity
+        d.ctrl[0] -= error * proportional_scale
+        #print(diff, base_vel, velocity)
       
 
       with viewer.lock():
