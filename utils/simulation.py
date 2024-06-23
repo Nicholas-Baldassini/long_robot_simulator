@@ -9,7 +9,7 @@ import json
 # For movement
 velocity = 0
 # Speed increase
-vel_delta = 0.01
+vel_delta = 0.2
 direction = 0
 
 

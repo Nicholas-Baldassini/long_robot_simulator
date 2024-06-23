@@ -35,6 +35,8 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Long Robot Configuration")
         dashboard_widget = QWidget()
         export_widget = QWidget()
+        robot_setup_widget = QWidget()
+        help_widget = QWidget()
         
         
         self.title_font = PyQt5.QtGui.QFont()
@@ -42,18 +44,34 @@ class MainWindow(QMainWindow):
         
         
         self.tabs = QTabWidget()
-       # self.tabs.setTabsClosable(True)
         self.tabs.addTab(dashboard_widget, "Dashboard")
         self.tabs.addTab(export_widget, "Export")
+        self.tabs.addTab(robot_setup_widget, "Advanced Robot Settings")
+        self.tabs.addTab(help_widget, "Help")
         self.setCentralWidget(self.tabs)
         
         self.setup_dashboard(dashboard_widget)
         self.setup_export(export_widget)
+        self.setup_robot_setup(robot_setup_widget)
         
         
+    def setup_help(self, help_widget: QWidget):
+        pass
+    
+    def setup_robot_setup(self, setup_widget: QWidget):
+        main_layout = QVBoxLayout()
+        top_bar = QHBoxLayout()
+        robot_setup_title = QLabel("More advanced robot settings (optional)")
+        robot_setup_title.setFont(self.title_font)
+        top_bar.addWidget(robot_setup_title)
+        main_layout.addLayout(top_bar)
         
+        main_setup = QHBoxLayout()
+        main_setup.addWidget(QLabel("UNFINISHED"))
+        main_layout.addLayout(main_setup)
+        setup_widget.setLayout(main_layout)        
 
-    def setup_export(self, export):
+    def setup_export(self, export: QWidget):
         main_layout = QVBoxLayout()
         top_bar = QHBoxLayout()
         export_title = QLabel("Export Data ")
@@ -328,40 +346,6 @@ class MainWindow(QMainWindow):
                 elif child.layout() is not None:
                     self.clearLayout(child.layout())
 
-
-
-class MyTableWidget(QWidget):
-    
-    def __init__(self, parent):
-        super(QWidget, self).__init__(parent)
-        self.layout = QVBoxLayout()
-        
-        # Initialize tab screen
-        self.tabs = QTabWidget()
-        self.tab1 = QWidget()
-        self.tab2 = QWidget()
-        #self.tabs.resize(300,200)
-        
-        # Add tabs
-        self.tabs.addTab(self.tab1,"Dashboard")
-        self.tabs.addTab(self.tab2,"Export/Save Data")
-        
-        # Create first tab
-        #self.tab1.layout = QVBoxLayout(self)
-        # self.pushButton1 = QPushButton("PyQt5 button")
-        # self.tab1.layout.addWidget(self.pushButton1)
-        # self.tab1.setLayout(self.tab1.layout)
-        
-        # Add tabs to widget
-        self.layout.addWidget(self.tabs)
-        self.setLayout(self.layout)
-        
-    from PyQt5.QtCore import pyqtSlot
-    @pyqtSlot()
-    def on_click(self):
-        print("\n")
-        for currentQTableWidgetItem in self.tableWidget.selectedItems():
-            print(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text())
 
 
 

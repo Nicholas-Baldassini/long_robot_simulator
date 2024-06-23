@@ -17,349 +17,126 @@
         <geom type="plane" size="100 100 0.1" friction="0 0 0" rgba="0.984 0.984 0.984 1" />
         <!--
 		-->
-    <body name="obstacle_custom_37" pos="3.3375 -0.33 2">
-            <joint name="obstacle_custom_37_joint" type="free" damping="0.001" />
-            <geom name="obstacle_custom_37_geom" size="0.0375" rgba="0.501 0.733 0.568 1" fromto="0 0 0 0 0 0.01" type="capsule" />
+    <body name="obstacle_custom_7" pos="-0.855 2.025 0">
+            <geom name="obstacle_custom_7_geom" size="0.0375" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
         </body>
-        <body name="obstacle_custom_36" pos="3.3075 -0.9075 2">
-            <joint name="obstacle_custom_36_joint" type="free" damping="0.001" />
-            <geom name="obstacle_custom_36_geom" size="0.0375" rgba="0.501 0.733 0.568 1" fromto="0 0 0 0 0 0.01" type="capsule" />
+        <body name="obstacle_custom_6" pos="-1.275 0.6225 0">
+            <geom name="obstacle_custom_6_geom" size="0.0375" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
         </body>
-        <body name="obstacle_custom_35" pos="3.12 -0.96 2">
-            <joint name="obstacle_custom_35_joint" type="free" damping="0.001" />
-            <geom name="obstacle_custom_35_geom" size="0.0375" rgba="0.501 0.733 0.568 1" fromto="0 0 0 0 0 0.01" type="capsule" />
+        <body name="obstacle_custom_5" pos="-0.5775 -0.9225 0">
+            <geom name="obstacle_custom_5_geom" size="0.0375" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
         </body>
-        <body name="obstacle_custom_34" pos="3.1425 -1.305 2">
-            <joint name="obstacle_custom_34_joint" type="free" damping="0.001" />
-            <geom name="obstacle_custom_34_geom" size="0.0375" rgba="0.501 0.733 0.568 1" fromto="0 0 0 0 0 0.01" type="capsule" />
+        <body name="obstacle_custom_4" pos="1.08 -1.665 0">
+            <geom name="obstacle_custom_4_geom" size="0.0375" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
         </body>
-        <body name="obstacle_custom_33" pos="3.18 -1.8225 2">
-            <joint name="obstacle_custom_33_joint" type="free" damping="0.001" />
-            <geom name="obstacle_custom_33_geom" size="0.0375" rgba="0.501 0.733 0.568 1" fromto="0 0 0 0 0 0.01" type="capsule" />
+        <body name="obstacle_custom_3" pos="2.07 -0.1425 0">
+            <geom name="obstacle_custom_3_geom" size="0.0375" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
         </body>
-        <body name="obstacle_custom_32" pos="3.3525 -2.2725 2">
-            <joint name="obstacle_custom_32_joint" type="free" damping="0.001" />
-            <geom name="obstacle_custom_32_geom" size="0.0375" rgba="0.501 0.733 0.568 1" fromto="0 0 0 0 0 0.01" type="capsule" />
+        <body name="obstacle_custom_2" pos="1.6275 0.5775 0">
+            <geom name="obstacle_custom_2_geom" size="0.0375" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
         </body>
-        <body name="obstacle_custom_31" pos="3.3525 -1.935 2">
-            <joint name="obstacle_custom_31_joint" type="free" damping="0.001" />
-            <geom name="obstacle_custom_31_geom" size="0.0375" rgba="0.501 0.733 0.568 1" fromto="0 0 0 0 0 0.01" type="capsule" />
+        <body name="obstacle_custom_1" pos="0.945 1.2525 0">
+            <geom name="obstacle_custom_1_geom" size="0.0375" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
         </body>
-        <body name="obstacle_custom_30" pos="3.345 -1.245 2">
-            <joint name="obstacle_custom_30_joint" type="free" damping="0.001" />
-            <geom name="obstacle_custom_30_geom" size="0.0375" rgba="0.501 0.733 0.568 1" fromto="0 0 0 0 0 0.01" type="capsule" />
+        <body name="obstacle_custom_0" pos="-0.2325 1.5975 0">
+            <geom name="obstacle_custom_0_geom" size="0.0375" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
         </body>
-        <body name="obstacle_custom_29" pos="3.3525 -0.5625 2">
-            <joint name="obstacle_custom_29_joint" type="free" damping="0.001" />
-            <geom name="obstacle_custom_29_geom" size="0.0375" rgba="0.501 0.733 0.568 1" fromto="0 0 0 0 0 0.01" type="capsule" />
-        </body>
-        <body name="obstacle_custom_28" pos="3.345 0.255 2">
-            <joint name="obstacle_custom_28_joint" type="free" damping="0.001" />
-            <geom name="obstacle_custom_28_geom" size="0.0375" rgba="0.501 0.733 0.568 1" fromto="0 0 0 0 0 0.01" type="capsule" />
-        </body>
-        <body name="obstacle_custom_27" pos="3.3525 0.72 2">
-            <joint name="obstacle_custom_27_joint" type="free" damping="0.001" />
-            <geom name="obstacle_custom_27_geom" size="0.0375" rgba="0.501 0.733 0.568 1" fromto="0 0 0 0 0 0.01" type="capsule" />
-        </body>
-        <body name="obstacle_custom_26" pos="3.3375 1.245 2">
-            <joint name="obstacle_custom_26_joint" type="free" damping="0.001" />
-            <geom name="obstacle_custom_26_geom" size="0.0375" rgba="0.501 0.733 0.568 1" fromto="0 0 0 0 0 0.01" type="capsule" />
-        </body>
-        <body name="obstacle_custom_25" pos="3.2625 1.7025 2">
-            <joint name="obstacle_custom_25_joint" type="free" damping="0.001" />
-            <geom name="obstacle_custom_25_geom" size="0.0375" rgba="0.501 0.733 0.568 1" fromto="0 0 0 0 0 0.01" type="capsule" />
-        </body>
-        <body name="obstacle_custom_24" pos="3.0825 -2.3925 0">
-            <geom name="obstacle_custom_24_geom" size="0.0375" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_23" pos="3.0825 -1.695 0">
-            <geom name="obstacle_custom_23_geom" size="0.0375" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_22" pos="3.075 -0.765 0">
-            <geom name="obstacle_custom_22_geom" size="0.0375" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_21" pos="3.0675 -0.18 0">
-            <geom name="obstacle_custom_21_geom" size="0.0375" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_20" pos="3.0375 0.48 0">
-            <geom name="obstacle_custom_20_geom" size="0.0375" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_19" pos="2.9775 1.1475 0">
-            <geom name="obstacle_custom_19_geom" size="0.0375" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_18" pos="2.7825 1.515 0">
-            <geom name="obstacle_custom_18_geom" size="0.0375" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_17" pos="2.7825 0.795 0">
-            <geom name="obstacle_custom_17_geom" size="0.0375" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_16" pos="2.745 0.24 0">
-            <geom name="obstacle_custom_16_geom" size="0.0375" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_15" pos="2.775 -0.5925 0">
-            <geom name="obstacle_custom_15_geom" size="0.0375" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_14" pos="2.82 -1.35 0">
-            <geom name="obstacle_custom_14_geom" size="0.0375" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_13" pos="2.7975 -2.19 0">
-            <geom name="obstacle_custom_13_geom" size="0.0375" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_12" pos="2.49 -0.945 0">
-            <geom name="obstacle_custom_12_geom" size="0.12" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_11" pos="2.46 -1.68 0">
-            <geom name="obstacle_custom_11_geom" size="0.12" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_10" pos="2.475 0.45 0">
-            <geom name="obstacle_custom_10_geom" size="0.12" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_9" pos="2.4675 -0.27 0">
-            <geom name="obstacle_custom_9_geom" size="0.12" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_8" pos="2.415 1.125 0">
-            <geom name="obstacle_custom_8_geom" size="0.12" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_7" pos="2.3625 1.905 0">
-            <geom name="obstacle_custom_7_geom" size="0.12" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_6" pos="1.89 2.22 0">
-            <geom name="obstacle_custom_6_geom" size="0.135" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_5" pos="1.89 1.3875 0">
-            <geom name="obstacle_custom_5_geom" size="0.135" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_4" pos="1.92 0.66 0">
-            <geom name="obstacle_custom_4_geom" size="0.135" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_3" pos="1.935 0.0 0">
-            <geom name="obstacle_custom_3_geom" size="0.135" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_2" pos="1.9425 -0.6375 0">
-            <geom name="obstacle_custom_2_geom" size="0.135" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_1" pos="1.9425 -1.0725 0">
-            <geom name="obstacle_custom_1_geom" size="0.135" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="obstacle_custom_0" pos="1.92 -1.92 0">
-            <geom name="obstacle_custom_0_geom" size="0.135" rgba="0.411 0.580 0.815 1" fromto="0 0 0 0 0 0.2" type="cylinder" />
-        </body>
-        <body name="base" pos="-4.8 0 0.05">
+        <body name="base" pos="-1.5 0 0.05">
             <geom size="0.05" type="sphere" />
             <joint axis="1 0 0" name="sphere_velocity" pos="0 0 0" range="-200 200" type="slide" />
             <body name="base_link" pos="0.05 0 0">
-                <geom class="geom0" fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" />
+                <geom class="geom0" fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" />
                 <joint axis="0 0 1" class="link" name="base_joint" pos="0 0 0" range="-40.5 40.5" type="hinge" />
-                <body name="link_0" pos="0.08 0 0">
-                    <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
+                <body name="link_0" pos="0.05 0 0">
+                    <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
                     <joint axis="0 0 1" class="link" name="joint_0" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                    <body name="link_1" pos="0.08 0 0">
-                        <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
+                    <body name="link_1" pos="0.05 0 0">
+                        <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
                         <joint axis="0 0 1" class="link" name="joint_1" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                        <body name="link_2" pos="0.08 0 0">
-                            <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
+                        <body name="link_2" pos="0.05 0 0">
+                            <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
                             <joint axis="0 0 1" class="link" name="joint_2" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                            <body name="link_3" pos="0.08 0 0">
-                                <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
+                            <body name="link_3" pos="0.05 0 0">
+                                <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
                                 <joint axis="0 0 1" class="link" name="joint_3" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                <body name="link_4" pos="0.08 0 0">
-                                    <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
+                                <body name="link_4" pos="0.05 0 0">
+                                    <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
                                     <joint axis="0 0 1" class="link" name="joint_4" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                    <body name="link_5" pos="0.08 0 0">
-                                        <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
+                                    <body name="link_5" pos="0.05 0 0">
+                                        <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
                                         <joint axis="0 0 1" class="link" name="joint_5" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                        <body name="link_6" pos="0.08 0 0">
-                                            <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
+                                        <body name="link_6" pos="0.05 0 0">
+                                            <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
                                             <joint axis="0 0 1" class="link" name="joint_6" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                            <body name="link_7" pos="0.08 0 0">
-                                                <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
+                                            <body name="link_7" pos="0.05 0 0">
+                                                <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
                                                 <joint axis="0 0 1" class="link" name="joint_7" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                <body name="link_8" pos="0.08 0 0">
-                                                    <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
+                                                <body name="link_8" pos="0.05 0 0">
+                                                    <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
                                                     <joint axis="0 0 1" class="link" name="joint_8" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                    <body name="link_9" pos="0.08 0 0">
-                                                        <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
+                                                    <body name="link_9" pos="0.05 0 0">
+                                                        <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
                                                         <joint axis="0 0 1" class="link" name="joint_9" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                        <body name="link_10" pos="0.08 0 0">
-                                                            <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
+                                                        <body name="link_10" pos="0.05 0 0">
+                                                            <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
                                                             <joint axis="0 0 1" class="link" name="joint_10" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                            <body name="link_11" pos="0.08 0 0">
-                                                                <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
+                                                            <body name="link_11" pos="0.05 0 0">
+                                                                <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
                                                                 <joint axis="0 0 1" class="link" name="joint_11" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                <body name="link_12" pos="0.08 0 0">
-                                                                    <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
+                                                                <body name="link_12" pos="0.05 0 0">
+                                                                    <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
                                                                     <joint axis="0 0 1" class="link" name="joint_12" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                    <body name="link_13" pos="0.08 0 0">
-                                                                        <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
+                                                                    <body name="link_13" pos="0.05 0 0">
+                                                                        <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
                                                                         <joint axis="0 0 1" class="link" name="joint_13" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                        <body name="link_14" pos="0.08 0 0">
-                                                                            <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
+                                                                        <body name="link_14" pos="0.05 0 0">
+                                                                            <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
                                                                             <joint axis="0 0 1" class="link" name="joint_14" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                            <body name="link_15" pos="0.08 0 0">
-                                                                                <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
+                                                                            <body name="link_15" pos="0.05 0 0">
+                                                                                <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
                                                                                 <joint axis="0 0 1" class="link" name="joint_15" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                <body name="link_16" pos="0.08 0 0">
-                                                                                    <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
+                                                                                <body name="link_16" pos="0.05 0 0">
+                                                                                    <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
                                                                                     <joint axis="0 0 1" class="link" name="joint_16" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                    <body name="link_17" pos="0.08 0 0">
-                                                                                        <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
+                                                                                    <body name="link_17" pos="0.05 0 0">
+                                                                                        <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
                                                                                         <joint axis="0 0 1" class="link" name="joint_17" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                        <body name="link_18" pos="0.08 0 0">
-                                                                                            <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
+                                                                                        <body name="link_18" pos="0.05 0 0">
+                                                                                            <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
                                                                                             <joint axis="0 0 1" class="link" name="joint_18" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                            <body name="link_19" pos="0.08 0 0">
-                                                                                                <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
+                                                                                            <body name="link_19" pos="0.05 0 0">
+                                                                                                <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
                                                                                                 <joint axis="0 0 1" class="link" name="joint_19" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                <body name="link_20" pos="0.08 0 0">
-                                                                                                    <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
+                                                                                                <body name="link_20" pos="0.05 0 0">
+                                                                                                    <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
                                                                                                     <joint axis="0 0 1" class="link" name="joint_20" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                    <body name="link_21" pos="0.08 0 0">
-                                                                                                        <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
+                                                                                                    <body name="link_21" pos="0.05 0 0">
+                                                                                                        <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
                                                                                                         <joint axis="0 0 1" class="link" name="joint_21" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                        <body name="link_22" pos="0.08 0 0">
-                                                                                                            <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
+                                                                                                        <body name="link_22" pos="0.05 0 0">
+                                                                                                            <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
                                                                                                             <joint axis="0 0 1" class="link" name="joint_22" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                            <body name="link_23" pos="0.08 0 0">
-                                                                                                                <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
+                                                                                                            <body name="link_23" pos="0.05 0 0">
+                                                                                                                <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
                                                                                                                 <joint axis="0 0 1" class="link" name="joint_23" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                <body name="link_24" pos="0.08 0 0">
-                                                                                                                    <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
+                                                                                                                <body name="link_24" pos="0.05 0 0">
+                                                                                                                    <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
                                                                                                                     <joint axis="0 0 1" class="link" name="joint_24" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                    <body name="link_25" pos="0.08 0 0">
-                                                                                                                        <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
+                                                                                                                    <body name="link_25" pos="0.05 0 0">
+                                                                                                                        <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
                                                                                                                         <joint axis="0 0 1" class="link" name="joint_25" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                        <body name="link_26" pos="0.08 0 0">
-                                                                                                                            <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
+                                                                                                                        <body name="link_26" pos="0.05 0 0">
+                                                                                                                            <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
                                                                                                                             <joint axis="0 0 1" class="link" name="joint_26" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                            <body name="link_27" pos="0.08 0 0">
-                                                                                                                                <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
+                                                                                                                            <body name="link_27" pos="0.05 0 0">
+                                                                                                                                <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
                                                                                                                                 <joint axis="0 0 1" class="link" name="joint_27" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                <body name="link_28" pos="0.08 0 0">
-                                                                                                                                    <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
+                                                                                                                                <body name="link_28" pos="0.05 0 0">
+                                                                                                                                    <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
                                                                                                                                     <joint axis="0 0 1" class="link" name="joint_28" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                    <body name="link_29" pos="0.08 0 0">
-                                                                                                                                        <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
+                                                                                                                                    <body name="link_29" pos="0.05 0 0">
+                                                                                                                                        <geom fromto="0 0 0 0.05 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
                                                                                                                                         <joint axis="0 0 1" class="link" name="joint_29" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                        <body name="link_30" pos="0.08 0 0">
-                                                                                                                                            <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
-                                                                                                                                            <joint axis="0 0 1" class="link" name="joint_30" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                            <body name="link_31" pos="0.08 0 0">
-                                                                                                                                                <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
-                                                                                                                                                <joint axis="0 0 1" class="link" name="joint_31" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                <body name="link_32" pos="0.08 0 0">
-                                                                                                                                                    <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
-                                                                                                                                                    <joint axis="0 0 1" class="link" name="joint_32" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                    <body name="link_33" pos="0.08 0 0">
-                                                                                                                                                        <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
-                                                                                                                                                        <joint axis="0 0 1" class="link" name="joint_33" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                        <body name="link_34" pos="0.08 0 0">
-                                                                                                                                                            <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
-                                                                                                                                                            <joint axis="0 0 1" class="link" name="joint_34" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                            <body name="link_35" pos="0.08 0 0">
-                                                                                                                                                                <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
-                                                                                                                                                                <joint axis="0 0 1" class="link" name="joint_35" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                <body name="link_36" pos="0.08 0 0">
-                                                                                                                                                                    <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
-                                                                                                                                                                    <joint axis="0 0 1" class="link" name="joint_36" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                    <body name="link_37" pos="0.08 0 0">
-                                                                                                                                                                        <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
-                                                                                                                                                                        <joint axis="0 0 1" class="link" name="joint_37" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                        <body name="link_38" pos="0.08 0 0">
-                                                                                                                                                                            <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
-                                                                                                                                                                            <joint axis="0 0 1" class="link" name="joint_38" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                            <body name="link_39" pos="0.08 0 0">
-                                                                                                                                                                                <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
-                                                                                                                                                                                <joint axis="0 0 1" class="link" name="joint_39" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                                <body name="link_40" pos="0.08 0 0">
-                                                                                                                                                                                    <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
-                                                                                                                                                                                    <joint axis="0 0 1" class="link" name="joint_40" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                                    <body name="link_41" pos="0.08 0 0">
-                                                                                                                                                                                        <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
-                                                                                                                                                                                        <joint axis="0 0 1" class="link" name="joint_41" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                                        <body name="link_42" pos="0.08 0 0">
-                                                                                                                                                                                            <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
-                                                                                                                                                                                            <joint axis="0 0 1" class="link" name="joint_42" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                                            <body name="link_43" pos="0.08 0 0">
-                                                                                                                                                                                                <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
-                                                                                                                                                                                                <joint axis="0 0 1" class="link" name="joint_43" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                                                <body name="link_44" pos="0.08 0 0">
-                                                                                                                                                                                                    <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
-                                                                                                                                                                                                    <joint axis="0 0 1" class="link" name="joint_44" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                                                    <body name="link_45" pos="0.08 0 0">
-                                                                                                                                                                                                        <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
-                                                                                                                                                                                                        <joint axis="0 0 1" class="link" name="joint_45" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                                                        <body name="link_46" pos="0.08 0 0">
-                                                                                                                                                                                                            <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
-                                                                                                                                                                                                            <joint axis="0 0 1" class="link" name="joint_46" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                                                            <body name="link_47" pos="0.08 0 0">
-                                                                                                                                                                                                                <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
-                                                                                                                                                                                                                <joint axis="0 0 1" class="link" name="joint_47" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                                                                <body name="link_48" pos="0.08 0 0">
-                                                                                                                                                                                                                    <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
-                                                                                                                                                                                                                    <joint axis="0 0 1" class="link" name="joint_48" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                                                                    <body name="link_49" pos="0.08 0 0">
-                                                                                                                                                                                                                        <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
-                                                                                                                                                                                                                        <joint axis="0 0 1" class="link" name="joint_49" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                                                                        <body name="link_50" pos="0.08 0 0">
-                                                                                                                                                                                                                            <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
-                                                                                                                                                                                                                            <joint axis="0 0 1" class="link" name="joint_50" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                                                                            <body name="link_51" pos="0.08 0 0">
-                                                                                                                                                                                                                                <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
-                                                                                                                                                                                                                                <joint axis="0 0 1" class="link" name="joint_51" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                                                                                <body name="link_52" pos="0.08 0 0">
-                                                                                                                                                                                                                                    <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
-                                                                                                                                                                                                                                    <joint axis="0 0 1" class="link" name="joint_52" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                                                                                    <body name="link_53" pos="0.08 0 0">
-                                                                                                                                                                                                                                        <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
-                                                                                                                                                                                                                                        <joint axis="0 0 1" class="link" name="joint_53" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                                                                                        <body name="link_54" pos="0.08 0 0">
-                                                                                                                                                                                                                                            <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
-                                                                                                                                                                                                                                            <joint axis="0 0 1" class="link" name="joint_54" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                                                                                            <body name="link_55" pos="0.08 0 0">
-                                                                                                                                                                                                                                                <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
-                                                                                                                                                                                                                                                <joint axis="0 0 1" class="link" name="joint_55" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                                                                                                <body name="link_56" pos="0.08 0 0">
-                                                                                                                                                                                                                                                    <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
-                                                                                                                                                                                                                                                    <joint axis="0 0 1" class="link" name="joint_56" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                                                                                                    <body name="link_57" pos="0.08 0 0">
-                                                                                                                                                                                                                                                        <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
-                                                                                                                                                                                                                                                        <joint axis="0 0 1" class="link" name="joint_57" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                                                                                                        <body name="link_58" pos="0.08 0 0">
-                                                                                                                                                                                                                                                            <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.274 0.274 0.274 1" friction="0 0 0" />
-                                                                                                                                                                                                                                                            <joint axis="0 0 1" class="link" name="joint_58" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                                                                                                            <body name="link_59" pos="0.08 0 0">
-                                                                                                                                                                                                                                                                <geom fromto="0 0 0 0.08 0 0" size="0.035" type="capsule" rgba="0.196 0.196 0.196 1" friction="0 0 0" />
-                                                                                                                                                                                                                                                                <joint axis="0 0 1" class="link" name="joint_59" pos="0 0 0" range="-40.5 40.5" type="hinge" stiffness="10" />
-                                                                                                                                                                                                                                                            </body>
-                                                                                                                                                                                                                                                        </body>
-                                                                                                                                                                                                                                                    </body>
-                                                                                                                                                                                                                                                </body>
-                                                                                                                                                                                                                                            </body>
-                                                                                                                                                                                                                                        </body>
-                                                                                                                                                                                                                                    </body>
-                                                                                                                                                                                                                                </body>
-                                                                                                                                                                                                                            </body>
-                                                                                                                                                                                                                        </body>
-                                                                                                                                                                                                                    </body>
-                                                                                                                                                                                                                </body>
-                                                                                                                                                                                                            </body>
-                                                                                                                                                                                                        </body>
-                                                                                                                                                                                                    </body>
-                                                                                                                                                                                                </body>
-                                                                                                                                                                                            </body>
-                                                                                                                                                                                        </body>
-                                                                                                                                                                                    </body>
-                                                                                                                                                                                </body>
-                                                                                                                                                                            </body>
-                                                                                                                                                                        </body>
-                                                                                                                                                                    </body>
-                                                                                                                                                                </body>
-                                                                                                                                                            </body>
-                                                                                                                                                        </body>
-                                                                                                                                                    </body>
-                                                                                                                                                </body>
-                                                                                                                                            </body>
-                                                                                                                                        </body>
                                                                                                                                     </body>
                                                                                                                                 </body>
                                                                                                                             </body>
@@ -428,36 +205,6 @@
         <motor class="position" ctrlrange="-40.5 40.5" joint="joint_27" name="act_joint_27" />
         <motor class="position" ctrlrange="-40.5 40.5" joint="joint_28" name="act_joint_28" />
         <motor class="position" ctrlrange="-40.5 40.5" joint="joint_29" name="act_joint_29" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_30" name="act_joint_30" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_31" name="act_joint_31" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_32" name="act_joint_32" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_33" name="act_joint_33" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_34" name="act_joint_34" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_35" name="act_joint_35" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_36" name="act_joint_36" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_37" name="act_joint_37" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_38" name="act_joint_38" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_39" name="act_joint_39" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_40" name="act_joint_40" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_41" name="act_joint_41" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_42" name="act_joint_42" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_43" name="act_joint_43" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_44" name="act_joint_44" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_45" name="act_joint_45" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_46" name="act_joint_46" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_47" name="act_joint_47" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_48" name="act_joint_48" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_49" name="act_joint_49" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_50" name="act_joint_50" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_51" name="act_joint_51" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_52" name="act_joint_52" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_53" name="act_joint_53" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_54" name="act_joint_54" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_55" name="act_joint_55" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_56" name="act_joint_56" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_57" name="act_joint_57" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_58" name="act_joint_58" />
-        <motor class="position" ctrlrange="-40.5 40.5" joint="joint_59" name="act_joint_59" />
     </actuator>
     <asset />
     <option gravity="0 0 -1.8" />
