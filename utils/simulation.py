@@ -83,7 +83,7 @@ def simulate(conf_file="simulationConf.json"):
 
 
 
-  cinematics = True
+  cinematics = False
   # Change runtime_speed to speed up or slow down simulation
   runtime_speed = 1 # 0.20
   with mujoco.viewer.launch_passive(m, d, key_callback=key_callback, show_left_ui=conf["show_muj_UI"], show_right_ui=conf["show_muj_UI"] ) as viewer:
@@ -120,12 +120,12 @@ def simulate(conf_file="simulationConf.json"):
                 d.ctrl[idx] += ctrl_interpolation * direction
       
       # PID CONTROLLER
-      if enable_movement and conf["enable_PID"]:
-        proportional_scale = 50
-        base_vel = d.qvel[0]
-        error = base_vel - velocity
-        d.ctrl[0] -= error * proportional_scale
-        #print(diff, base_vel, velocity)
+      # if enable_movement and conf["enable_PID"]:
+      #   proportional_scale = 50
+      #   base_vel = d.qvel[0]
+      #   error = base_vel - velocity
+      #   d.ctrl[0] -= error * proportional_scale
+      #   #print(diff, base_vel, velocity)
       
 
       with viewer.lock():
