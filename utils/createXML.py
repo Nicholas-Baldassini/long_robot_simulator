@@ -1,10 +1,10 @@
 import xml.etree.ElementTree as ET
 
-def create_MJCF(num, len, extra=None, movement=False, destination='./MJCFS/new_cont.xml', colour_scheme=True, gravity=True):
+def create_MJCF(num, len, extra=None, STLS=None, movement=False, destination='./MJCFS/new_cont.xml', colour_scheme=True, gravity=True, thick=0.035):
     # Config params
     filename = destination
     joints_num = num
-    thickness = 0.035
+    thickness = thick
     length = len
     joint_range = "-40.5 40.5"
 
@@ -32,6 +32,12 @@ def create_MJCF(num, len, extra=None, movement=False, destination='./MJCFS/new_c
     if gravity:
         ET.SubElement(mujoco, "option", attrib={"gravity": "0 0 -1.8"})
     # ----------------------------
+
+    # Add STL assets
+    if STLS:
+        for stl_obj in STLS:
+            mujoco.insert(2, stl_obj[0])
+            worldbody.insert(2, stl_obj[1])
 
     # Main world body
     plane_attrib = {"type": "plane", "size": "100 100 0.1", "friction": "0 0 0"}
@@ -125,32 +131,62 @@ def create_obstacles(filename, num, pos=None):
 
 
 def generate_from_file(filename, colour_scheme=None):
+    """
+    Returns (basic_shapes, STLS) tuple of generated MJCF xml attributes ready to be used by the
+    create_MJCF function above
     
+    your taskspace conf file should have the following format
+    
+    Shape scale y x z static_flag alpha beta gamma
+    
+    Some examples are,
+    
+    
+    Circle 0.05 0 0 0 True 0 0 0
+    STLS_dir/teaCup.stl 0.05 0 0 0 False 0 0 0 
+    """
+    basic_shapes = ["Circle", "Square"]
     bodies = []
+    STLS = []
     with open(filename) as f:
         for ind, i in enumerate(f.readlines()):
             i = i.split(" ")
-            shape, radius, y, x, static = i[0], i[1], i[2], i[3], i[4][:-1]
-            height = 0
-            s_colour = "0.411 0.580 0.815 1"
-            f_colour = "0.501 0.733 0.568 1"
-            if colour_scheme == "Cinematic":
+            #shape, scale, y, x, static = i[0], i[1], i[2], i[3], i[4][:-1]
+            shape, scale, y, x, z, static, alpha, beta, gamma = i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8][:-1]
+            if shape in basic_shapes:
+                s_colour = "0.411 0.580 0.815 1"
+                f_colour = "0.501 0.733 0.568 1"
+                if colour_scheme == "Cinematic":
+                    
+                    s_colour = "0 0.5 1 1"
+                    f_colour = "0 0 0 1"
                 
-                s_colour = "0 0.5 1 1"
-                f_colour = "0 0 0 1"
+                if static == "False":
+                    
+                    body = ET.Element("body", attrib={"name": f"obstacle_custom_{ind}", "pos": f"{x} {y} {2}", "euler": f"{alpha} {beta} {gamma}"})
+                    ET.SubElement(body, "joint", attrib={"name": f"obstacle_custom_{ind}_joint", "type": "free", "damping": "0.001"})
+                    ET.SubElement(body, "geom", attrib={"name": f"obstacle_custom_{ind}_geom", "size": f"{scale}", "rgba": f_colour, "fromto": "0 0 0 0 0 0.01", "type": "capsule"})
+                else:
+                    body = ET.Element("body", attrib={"name": f"obstacle_custom_{ind}", "pos": f"{x} {y} {z}", "euler": f"{alpha} {beta} {gamma}"})
+                    #ET.SubElement(body, "joint", attrib={"name": f"obstacle_custom_{ind}_joint", "type": "free", "damping": "0.001"})
+                    ET.SubElement(body, "geom", attrib={"name": f"obstacle_custom_{ind}_geom", "size": f"{scale}", "rgba": s_colour, "fromto": "0 0 0 0 0 0.2", "type": "cylinder"})
+                bodies.append(body)
             
-            if static == "False":
-                
-                
-                body = ET.Element("body", attrib={"name": f"obstacle_custom_{ind}", "pos": f"{x} {y} {2}"})
-                ET.SubElement(body, "joint", attrib={"name": f"obstacle_custom_{ind}_joint", "type": "free", "damping": "0.001"})
-                ET.SubElement(body, "geom", attrib={"name": f"obstacle_custom_{ind}_geom", "size": f"{radius}", "rgba": f_colour, "fromto": "0 0 0 0 0 0.01", "type": "capsule"})
             else:
-                body = ET.Element("body", attrib={"name": f"obstacle_custom_{ind}", "pos": f"{x} {y} {height}"})
-                #ET.SubElement(body, "joint", attrib={"name": f"obstacle_custom_{ind}_joint", "type": "free", "damping": "0.001"})
-                ET.SubElement(body, "geom", attrib={"name": f"obstacle_custom_{ind}_geom", "size": f"{radius}", "rgba": s_colour, "fromto": "0 0 0 0 0 0.2", "type": "cylinder"})
-            bodies.append(body)
-    return bodies
+                name = f"{ind}_{shape}"
+                asset_tag = ET.Element("asset")
+                ET.SubElement(asset_tag, "mesh", attrib={"name": name, "content_type":"model/stl", "file": shape, "scale": f"{scale} {scale} {scale}"})
+
+                stl_bod = ET.Element("body", attrib={"pos": f"{x} {y} {z}", "euler": f"{alpha} {beta} {gamma}"})
+                ET.SubElement(stl_bod, "geom", attrib={"type": "mesh", "mesh": name, "rgba": "0.2 0.5 0.8 1"})
+                
+                if static:
+                    ET.SubElement(stl_bod, "joint", attrib={"name": f"obstacle_custom_{ind}_joint", "type": "free", "damping": "0.001"})
+                
+                STLS.append((asset_tag, stl_bod))
+            
+            
+    return bodies, STLS
 
 
 

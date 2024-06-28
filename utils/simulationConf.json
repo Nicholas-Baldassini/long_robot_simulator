@@ -1,12 +1,12 @@
 {
-    "robot_lock": true,
-    "num_joints": 35,
-    "joint_spacing": 0.02,
+    "robot_lock": false,
+    "num_joints": 56,
+    "joint_spacing": 0.1,
     "gravity": true,
     "disable_obstacles": false,
     "colour_scheme": "Clean",
     "runtime_speed": 1,
     "show_muj_UI": false,
     "enable_PID": true,
-    "taskspace_name": "taskspace 1"
+    "taskspace_name": "testing_STLS"
 }

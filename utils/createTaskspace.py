@@ -41,10 +41,16 @@ def start_taskspace_creator():
         STATIC = not STATIC
 
     def save_to_file():
-        filename = "utils/taskspace.conf"
+        filename = "MJCFS/taskspaces/taskspace.conf"
         with open(filename, "w+") as f:
             for i in coordinates:
-                line = f"{i[0]} {i[1]} {i[2]} {i[3]} {i[4]}\n"
+                
+                if i[2] == "True":
+                    z = 2
+                else:
+                    z = 0
+                #shape, scale, y, x, z, static, alpha, beta, gamma
+                line = f"{i[0]} {i[1]} {i[2]} {i[3]} {z} {i[4]} 0 0 0\n"
                 f.write(line)
         print(f"saved to {filename}")
 

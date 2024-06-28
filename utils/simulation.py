@@ -23,7 +23,8 @@ def simulate(conf_file="simulationConf.json"):
   assert colour_scheme in ["Clean", "Cinematic"]
 
   # Load in your taskspace. Taskspace.conf is generated with utils/createTaskspace.py
-  custom_obstacles = generate_from_file("./utils/taskspace.conf", colour_scheme=colour_scheme)
+  print(conf['taskspace_name'])
+  custom_obstacles = generate_from_file(f"./MJCFS/taskspaces/{conf['taskspace_name']}", colour_scheme=colour_scheme)
 
   # Uncomment this if you want NO obstacles in your scene
   if conf["disable_obstacles"]:
@@ -34,10 +35,11 @@ def simulate(conf_file="simulationConf.json"):
   #obstacles = create_obstacles('./MJCFS/cylinder_obstacle.xml', 3, pos=[(0.5, -0.15, 0), (0.5, 0.15, 0), (1.1, 0.15, 0)])
   joint_num = conf["num_joints"]
   link_len = conf["joint_spacing"]
-  create_MJCF(joint_num, link_len, extra=custom_obstacles, movement=enable_movement, destination='./MJCFS/new_cont.xml', colour_scheme=colour_scheme, gravity=conf["gravity"])
+  create_MJCF(joint_num, link_len, extra=custom_obstacles[0], STLS=custom_obstacles[1], movement=enable_movement, destination='./MJCFS/new_cont.xml', colour_scheme=colour_scheme, gravity=conf["gravity"])
 
   # Load in your MJCF file
-  m = mujoco.MjModel.from_xml_path('./MJCFS/new_cont.xml')
+  #m = mujoco.MjModel.from_xml_path('./test.xml')
+  m = mujoco.MjModel.from_xml_path('MJCFS/new_cont.xml')
   m.body_mass[1] = 10000
   m.body_inertia[1, :] += 10000
   

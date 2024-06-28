@@ -24,16 +24,24 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
+        # Main configuration settings dictionary
         self.confDict = {"robot_lock": True, "num_joints": 30, "joint_spacing": 0.05, "gravity": True, 
                          "disable_obstacles": False, "colour_scheme": "Clean", "runtime_speed": 1, "show_muj_UI": False,
-                         "enable_PID": True, "taskspace_name": "taskspace 1"}
+                         "enable_PID": True, "taskspace_name": "taskspace.conf"}
         
+        # Dictionary for exporting data
         self.exportDict = {"dest_file": "./exportData/joint_data.csv", "start_time": 1, "end_time": 60, "save_type": "joint angles"}
-        self.taskspace_Data, self.obstacle_id = {}, 0
+        
+        # Taskspace creation dictionary
+        self.taskspace_Data, self.obstacle_id, self.taskspace_page_filename = {}, 0, self.confDict["taskspace_name"]
+        
+        # Robot settings dictionary
+        self.advancedSettings = {"thickness": 0.035}
         
         # ADD torque, position, velocity control. Do this actuatorgroupdisable element in mujoco
         self.confFile = "utils/simulationConf.json"
 
+        # Tabs on main window
         self.setWindowTitle("Long Robot Configuration")
         dashboard_widget = QWidget()
         export_widget = QWidget()
@@ -41,11 +49,11 @@ class MainWindow(QMainWindow):
         taskspace_widget = QWidget()
         help_widget = QWidget()
         
-        
+        # Bold font
         self.title_font = PyQt5.QtGui.QFont()
         self.title_font.setBold(True)
         
-        
+        # Add tabs
         self.tabs = QTabWidget()
         self.tabs.addTab(dashboard_widget, "Dashboard")
         self.tabs.addTab(export_widget, "Export")
@@ -54,6 +62,7 @@ class MainWindow(QMainWindow):
         self.tabs.addTab(help_widget, "Help")
         self.setCentralWidget(self.tabs)
         
+        # Setup each tab seperately
         self.setup_dashboard(dashboard_widget)
         self.setup_export(export_widget)
         self.setup_robot_setup(robot_setup_widget)
@@ -61,11 +70,18 @@ class MainWindow(QMainWindow):
         
     
     def add_obstacle_button(self):
+        """Adding an obstacle to the taskspace page"""
         obstacle_box = QHBoxLayout()
-        self.taskspace_Data[str(self.obstacle_id)] = [obstacle_box, {"Shape": "Circle", "X": 0, "Y": 0, "Z": 0, "Static": False, "alpha": 0, "beta": 0, "gamma": 0}]
+        
+        # Data each obstacle holds
+        self.taskspace_Data[str(self.obstacle_id)] = [obstacle_box, {"Shape": "Circle", "X": 0, "Y": 0, "Z": 0, "Static": False, "alpha": 0, "beta": 0, "gamma": 0, "Size": 0.5}]
+        # Each obstacle has its own ID to keep track of it
         id_t = self.obstacle_id
+        
+        # Object type combo box
         obstacle_type = QComboBox()
-        obstacle_type.addItems(["Cylinder", "Square (not finished)"])
+        obstacle_type.setEditable(True)
+        obstacle_type.addItems(["Cylinder", "Square (not finished)", "STLS_dir/teaCup.stl"])
         obstacle_type.currentTextChanged.connect(lambda w, id=id_t: self.taskspace_Data[str(id)][1].update([("Shape", w)]))
         obstacle_box.addWidget(obstacle_type)
         
@@ -78,7 +94,7 @@ class MainWindow(QMainWindow):
             i.setMinimum(-1000)
             i.setMaximum(1000)
             i.setSingleStep(0.05)
-            i.setMaximumWidth(55)
+            i.setMaximumWidth(50)
         
         
         x_coord.textChanged.connect(lambda w, id=id_t: self.taskspace_Data[str(id)][1].update([("X", w)]))
@@ -94,6 +110,7 @@ class MainWindow(QMainWindow):
         obstacle_box.addLayout(z_coord_box)
         
         static_check_box = QCheckBox("Is Static")
+        static_check_box.setMaximumWidth(70)
         static_check_box.stateChanged.connect(lambda w, id=id_t: self.taskspace_Data[str(id)][1].update([("Static", not self.taskspace_Data[str(id)][1]["Static"])]))
         obstacle_box.addWidget(static_check_box)
  
@@ -105,7 +122,8 @@ class MainWindow(QMainWindow):
         for i in [alpha, beta, gamma]:
             i.setMinimum(-360)
             i.setMaximum(360)
-            i.setMaximumWidth(55)
+            i.setMaximumWidth(50)
+            i.setSingleStep(5)
         alpha.textChanged.connect(lambda w, id=id_t: self.taskspace_Data[str(id)][1].update([("alpha", w)]))
         beta.textChanged.connect(lambda w, id=id_t: self.taskspace_Data[str(id)][1].update([("beta", w)]))
         gamma.textChanged.connect(lambda w, id=id_t: self.taskspace_Data[str(id)][1].update([("gamma", w)]))
@@ -117,6 +135,17 @@ class MainWindow(QMainWindow):
         obstacle_box.addLayout(beta_box)
         obstacle_box.addLayout(gamma_box)
         
+        ob_size_box = QHBoxLayout()
+        ob_size_box.addWidget(QLabel("Size"))
+        ob_size = QDoubleSpinBox()
+        ob_size.setMinimum(0.00001)
+        ob_size.setValue(0.5)
+        ob_size.setSingleStep(0.001)
+        ob_size.setMaximum(50)
+        ob_size.setMaximumWidth(85)
+        ob_size.textChanged.connect(lambda w, id=id_t: self.taskspace_Data[str(id)][1].update([("Size", w)]))
+        ob_size_box.addWidget(ob_size)
+        obstacle_box.addLayout(ob_size_box)
         
         delete = QPushButton("-")
         delete.setMaximumWidth(30)
@@ -130,13 +159,22 @@ class MainWindow(QMainWindow):
         self.obstacle_id += 1
     
     def save_custom_obstacles_taskspace(self):
-        filename = os.path.join("./MJCFS/taskspaces", self.confDict["taskspace_name"])
+        filename = os.path.join("./MJCFS/taskspaces", self.taskspace_page_filename)
         with open(filename, "w+") as f:
-            for i in self.taskspace_Data.values():
-                print(i)
+            for v in self.taskspace_Data.values():
+                i = v[1]
+                #line = f"{i['Shape']} {i['Size']} {i['X']} {i['Y']} {i['Static']}\n"
+                #shape, scale, y, x, z, static, alpha, beta, gamma
+                line = f"{i['Shape']} {i['Size']} {i['Y']} {i['X']} {i['Z']} {i['Static']} {i['alpha']} {i['beta']} {i['gamma']}\n"
+                f.write(line)
+                
+                
     def change_custom_taskspace_file(self, fname):
+        self.taskspace_page_filename = fname
+
+    def change_setting_taskspace_name(self, fname):
         self.confDict["taskspace_name"] = fname
-        print(self.confDict)
+        
             
     
     def setup_taskspace(self, taskspace_widget: QWidget):
@@ -147,7 +185,9 @@ class MainWindow(QMainWindow):
         top_bar.addWidget(taskspace_title)
         notes = ["Instructions", f"- {chr(945)}, {chr(946)}, {chr(947)} are euler angles in degrees for the obstacle orientation", 
                  "- Static objects are locked in place and cannot move",
-                 "- You must specify your taskspace name on the dashboard to use it after saving it"]
+                 "- You must specify your taskspace name on the dashboard to use it after saving it",
+                 "- Choose a default object shape (Circle, Square, ...) or specify a path to a STL file",
+                 "- There can not be any spaces in your filename or path when specifying a STL file"]
         for i in notes:
             bullet_box = QHBoxLayout()
             bullet_box.addSpacing(20)
@@ -177,7 +217,7 @@ class MainWindow(QMainWindow):
         
         self.manually_add.addWidget(save_obstacles)
         self.manually_add.addLayout(obstacle_save_name_box)
-        add_obstacle = QPushButton("Add obstacle +")
+        add_obstacle = QPushButton("Add object +")
         add_obstacle.setMaximumWidth(300)
         add_obstacle.clicked.connect(self.add_obstacle_button)
         self.manually_add.addWidget(add_obstacle)
@@ -206,6 +246,17 @@ class MainWindow(QMainWindow):
         main_layout.addLayout(top_bar)
         
         main_setup = QHBoxLayout()
+        
+        
+        thickness_box = QHBoxLayout()
+        thickness_box.addWidget(QLabel("Thickness"))
+        thickness = QDoubleSpinBox()
+        thickness.setMinimum(0.01)
+        thickness.setSingleStep(0.005)
+        thickness.textChanged.connect(lambda w: self.advancedSettings.update([("thickness", w)]))
+        thickness_box.addWidget(thickness)
+        main_setup.addLayout(thickness_box)
+        
         main_setup.addWidget(QLabel("UNFINISHED"))
         main_layout.addLayout(main_setup)
         setup_widget.setLayout(main_layout)        
@@ -457,6 +508,14 @@ class MainWindow(QMainWindow):
         muj_ui = QCheckBox("Show Mujoco UI")
         muj_ui.stateChanged.connect(self.toggle_muj_ui)
         self.left.addWidget(muj_ui)
+        
+        # Taskspace name
+        taskspace_settings_box = QHBoxLayout()
+        taskspace_settings_box.addWidget(QLabel("Taskspace filename: "))
+        taskspace_name_line = QLineEdit("taskspace.conf")
+        taskspace_name_line.textEdited.connect(self.change_setting_taskspace_name)
+        taskspace_settings_box.addWidget(taskspace_name_line)
+        self.left.addLayout(taskspace_settings_box)
         
     def setup_controls(self):
         sec_title = QLabel("Controls")
