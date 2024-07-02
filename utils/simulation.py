@@ -40,20 +40,20 @@ def simulate(conf_file="simulationConf.json"):
   # Load in your MJCF file
   #m = mujoco.MjModel.from_xml_path('./test.xml')
   m = mujoco.MjModel.from_xml_path('MJCFS/new_cont.xml')
-  m.body_mass[1] = 10000
-  m.body_inertia[1, :] += 10000
+  # m.body_mass[1] = 1000000
+  # m.body_inertia[1, :] += 1000000
   
-  #m = mujoco.MjModel.from_xml_path('./test.xml')
+
   
   d = mujoco.MjData(m)
 
   # Zero out all data
-  mujoco.mj_resetData(m, d)
+  #mujoco.mj_resetData(m, d)
 
   # Torque control limit
-  ctrl_limit = 3
+  ctrl_limit = 0.5
   # The amount we increase the torque every step, we dont want to instantaneously change it
-  ctrl_interpolation = 0.005 #0.00002
+  ctrl_interpolation = 0.002 #0.00002
 
   # Apply torque flag
   apply_torque = True
@@ -122,12 +122,13 @@ def simulate(conf_file="simulationConf.json"):
                 d.ctrl[idx] += ctrl_interpolation * direction
       
       # PID CONTROLLER
-      # if enable_movement and conf["enable_PID"]:
-      #   proportional_scale = 50
-      #   base_vel = d.qvel[0]
-      #   error = base_vel - velocity
-      #   d.ctrl[0] -= error * proportional_scale
-      #   #print(diff, base_vel, velocity)
+      if enable_movement and conf["enable_PID"]:
+        
+        proportional_scale = 50
+        base_vel = d.qvel[0]
+        error = base_vel - velocity
+        d.ctrl[0] -= error * proportional_scale
+        #print(diff, base_vel, velocity)
       
 
       with viewer.lock():

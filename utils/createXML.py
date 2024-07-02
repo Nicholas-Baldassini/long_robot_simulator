@@ -92,7 +92,7 @@ def create_MJCF(num, len, extra=None, STLS=None, movement=False, destination='./
         joint_names.append(j_name)
         curr_tip = ET.SubElement(curr_tip, "body", attrib={"name": f"link_{i}", "pos": f"{length} 0 0"})
         ET.SubElement(curr_tip, "geom", attrib={ "fromto": f"0 0 0 {length} 0 0", "size": "0.035", "type":"capsule", "rgba": f"{colours[i % 2]}", "friction": "0 0 0"})
-        ET.SubElement(curr_tip, "joint", attrib={"axis": "0 0 1", "class": "link", "name":j_name, "pos": "0 0 0", "range": joint_range, "type": "hinge", "stiffness": "10"})
+        ET.SubElement(curr_tip, "joint", attrib={"axis": "0 0 1", "class": "link", "name":j_name, "pos": "0 0 0", "range": joint_range, "type": "hinge", "stiffness": "20"})
         #ET.SubElement(curr_tip, "inertial", attrib={"pos": "0 0 10", "mass": "1"})
         i += 1
 
@@ -178,9 +178,9 @@ def generate_from_file(filename, colour_scheme=None):
                 ET.SubElement(asset_tag, "mesh", attrib={"name": name, "content_type":"model/stl", "file": shape, "scale": f"{scale} {scale} {scale}"})
 
                 stl_bod = ET.Element("body", attrib={"pos": f"{x} {y} {z}", "euler": f"{alpha} {beta} {gamma}"})
-                ET.SubElement(stl_bod, "geom", attrib={"type": "mesh", "mesh": name, "rgba": "0.2 0.5 0.8 1"})
+                ET.SubElement(stl_bod, "geom", attrib={"type": "mesh", "mesh": name, "rgba": "0.2 0.5 0.8 0.5"})
                 
-                if static:
+                if static == "False":
                     ET.SubElement(stl_bod, "joint", attrib={"name": f"obstacle_custom_{ind}_joint", "type": "free", "damping": "0.001"})
                 
                 STLS.append((asset_tag, stl_bod))
