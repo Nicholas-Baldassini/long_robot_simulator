@@ -1,6 +1,23 @@
 # New commit
 The documentation listed here is for the second last commit. To use this one, do ```python start.py```
 
+
+# Installation
+Testing on Ubuntu only.
+```virtualenv mujEnv
+source mujEnv/bin/activate
+pip install -r requirments.txt
+```
+
+```sudo apt install python3-tk libxcb-cursor0 python3-dev build-essential libssl-dev libffi-dev libxml2-dev  libxslt1-dev zlib1g-dev libglew-dev libosmesa6-dev patchelf```
+
+# Start
+```python start.py```
+
+
+The rest of the documentation is for older commits. Can ignore.
+
+
 # long_robot_simulator
 Welcome to the long robot simulator repo. In this repo you will find a continuum framework built on top of the simulation engine Mujoco.
 
